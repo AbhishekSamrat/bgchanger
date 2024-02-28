@@ -3,87 +3,28 @@ import { useState,useEffect } from 'react';
 import './App.css';
 
 function App() {
-  const [todo,settodo] = useState("")
-  const [todoaray,settodoaray] = useState([])
-  const [edittodo,setedittodo] = useState("")
-  const [edittodoarray,setedittodoarray] = useState([])
-
-  useEffect(()=>{
-localStorage.setItem('todo',JSON.stringify(todo))
-
-  },[todo])
+const [color,setcolor] = useState("smoke")
 
 
-const delete_to_do = (index) =>{
-const updatetodo = todoaray.filter((_,i) => i !== index)
-settodoaray(updatetodo)
-}
-
-  /////// handle add todo start /////
-const handle_add_todo = () =>{
-if (todo.trim() !== ""){
-settodoaray([...todoaray,todo])
-settodo("")
-
-}
-
-}
-const edittodoap = () =>{
-
-  
-}
-  /////// handle add todo end /////
   return (
-    <div className="App">
+    
+    <div className="App" style={{backgroundColor:color,width:"100%",height:"1000px"}}>
    
-          <h1>TODO CRUD OPEARTION</h1>
-          <h2>Task Start</h2>
-          <input type='text' value={todo} placeholder='Add todo' onChange={((el) => settodo(el.target.value))}></input>
-          <button onClick={handle_add_todo}>Add</button>
-
-          <ul>
-          {
-            todoaray.map((el,index)=>{
-              return(
-
-                  <li key={index}> 
-                  {
-
-                    
-                    edittodoarray === index  ? (
-
-                      <>
-                      <input type='text' value={edittodo} onChange={(el) => setedittodo(el.target.value)}><input/>
-                      </>
-                      )
-                      :
-                      (
-
-                        <>
-                        {el}
-                        </>
-
-                      )
-
-                  } 
-                  {el}
-                  <button onClick={edittodoap}>Edit</button>
-                  <button onClick={()=>delete_to_do(index)}>delete</button>
-                  
-                  </li>
-              )
+          <h1>BG CHANGER</h1>
+          <button className='red' onClick={()=>setcolor("red")}  style={{backgroundColor:"red"}}>Red</button>
+          <button className='blue' onClick={()=>setcolor("blue")}>Blue</button>
+          <button className='green' onClick={()=>setcolor("green")}>Green</button>
+          <button className='pink' onClick={()=>setcolor("pink")} style={{backgroundColor:"pink"}}>Pink</button>
+          <button className='pink' onClick={()=>setcolor("black")} style={{backgroundColor:"black",color:"white"}}>Black</button>
+          <button className='pink' onClick={()=>setcolor("crimson")} style={{backgroundColor:"crimson"}}>Crimson</button>
+          <button className='pink' onClick={()=>setcolor("darkblue")} style={{backgroundColor:"darkblue"}}>Darkblue</button>
+          
+     
 
             
 
-            })
-          }
-         
-          </ul>
-
-
-    
     </div>
-  );
+     );
 }
 
 export default App;
